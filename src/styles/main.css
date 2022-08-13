@@ -1,0 +1,19 @@
+*{
+    margin:0
+}
+.App{
+    min-height:100vh;
+}
+
+.success{
+    background-color: #33A03E;
+}
+
+.failed{
+    background-color: #FC4E4E;
+}
+
+.tox-statusbar{display:none !important}
+blockquote{background: rgb(225, 225, 225);}
+
+#tinymce, * img{width:70px !important; height:70px !important;}

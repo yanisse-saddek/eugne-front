@@ -1,0 +1,13 @@
+.confirm-message{
+    display: flex;
+    justify-content: center;
+    margin-top:40px;
+}
+.msg{
+    width:80%;
+    padding:20px;
+    text-align: center;
+    color:white;
+    font-weight: bold;
+    font-size: 20Px;
+}

@@ -1,0 +1,99 @@
+.forum{
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+}
+.forum .forum-main{
+    margin-top:30px;
+    width:80%;
+}
+.forum .forum-main .top-buttons{
+    height:100px;
+    display: flex;
+    justify-content: space-between;
+}
+.forum .forum-main .top-buttons .new-topic{
+    height:50px;
+    width:200px;
+    color:white;
+    background-color: #3F5BF5;
+    font-weight: bold;
+    border:none;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.forum .forum-main .top-buttons .button-right{
+    display: flex;
+    flex-direction: column;
+}
+.forum .forum-main .top-buttons .button-right input{
+    height:50px;
+    width:340px;
+}
+.forum .forum-main .top-buttons .button-right select{
+    height:50px;
+    width:200px;
+    align-self: flex-end;
+}
+
+.forum .forum-main .topic-list .topic-bar{
+    margin-top:20px;
+    background-color: #3F5BF5;
+    display: flex;
+    height:50px;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.forum .forum-main .topic-list .message{
+    background-color: #F3F3F3;
+    color:black;
+}
+.author{
+    width:180px;
+}
+.subject{
+    width:400px;
+}
+.last-msg{
+    width:200px;
+}
+.number-msg{
+    width:100px;
+    text-align: center;
+}
+
+.forum .forum-main .topic-list .topic-link{
+    text-decoration: none;
+}
+
+.pagination{
+    display: flex;
+    justify-content: space-between;
+    margin-top:10px;
+}
+
+.pagination-left button{
+    margin-right:10px;
+}
+.pagination button{
+    background-color: #3F5BF5;
+    border:none;
+    color: white;
+    font-weight: bold;
+    padding:10px;
+}
+
+.icon{
+    color:white;
+    height:15px;
+    width:15px;
+}

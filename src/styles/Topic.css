@@ -1,0 +1,117 @@
+.topic{
+    min-height:90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.topic .topic-main{
+    width:80%;
+}
+.topic .topic-main .return-btn {
+    background-color: #3F5BF5;
+    font-weight: bold;
+    font-size: 15px;
+    border:none;
+    margin-top:30px;
+    height:50px;
+    width:200px;
+}
+.topic .topic-main .return-btn a{
+    color:white;
+    text-decoration: none;
+    font-size: 18px;
+}
+.topic .topic-main .topic-top{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding:15px;
+    display: flex;
+    background-color: #3F5BF5;
+    justify-content: space-between;
+    margin-top:30px;
+    color:white;
+}
+
+.topic .topic-main .topic-top .topic-top-right button{
+    margin-right:10px;
+    font-weight: bold;
+    font-size: 15px;
+    color:white;
+    border:none;
+}
+
+.topic .topic-main .topic-top .resolved{
+    background-color: #33A03E !important;
+}
+
+.topic .topic-main .topic-top .edit{
+    background-color: white !important;
+    color:#3F5BF5 !important
+}
+.topic .topic-main .topic-top .delete{
+    background-color: #FC4E4E !important;
+}
+
+.topic-main-messages .message{
+    padding:10px;
+    margin-bottom:20px;
+    background-color: #FAFAFA;
+}
+.topic-main-messages .message:nth-child(even){
+    background-color: #F3F3F3;
+}
+.topic-main-messages .message .message-top{
+    display: flex;
+}
+.topic-main-messages .message .message-top .profile-picture{
+    height:50px !important;
+    width:50px !important;
+    background-size: cover;
+}   
+
+.topic-main-messages .message .message-top  .message-top-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left:10px;
+}
+.topic-main-messages .message .message-top  .message-top-right .name{
+    font-size: 18px;
+    font-weight: bold;
+}
+.topic-main-messages .message .message-top  .message-top-right .date{
+    font-size: 14px;
+}
+.topic-main-messages .message .message-body{
+    min-height:200Px;
+    margin-top:10px;
+    border-bottom:2px solid black;
+    font-size: 13px;
+    padding:10px;
+}
+
+.message-footer{
+    font-size: 12px;
+    margin-top:10px
+}
+.separator{
+    height:30px;
+    background-color: #3F5BF5;
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+    padding:10px;
+}
+
+.page-bottom{
+    display: flex;
+    justify-content: flex-end;
+}
+.send-message{
+    height:30px;
+    color:white;
+    border:none;
+    background-color: #3F5BF5;
+    font-weight: bold;
+    margin-top:5px;
+}
