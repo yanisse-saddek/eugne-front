@@ -24,6 +24,7 @@ export default function Topic(){
         const message = {
             content:text,
         }   
+        axios.defaults.withCredentials = true;
         axios.post(`http://localhost:4000/topic/answer/${params.id}`, message).then(data=>{
             getTopicData()
         })

@@ -20,17 +20,22 @@ function App() {
   const [user, setUser] = useState()
 
   useEffect(()=>{
+    autoLogin()
+  }, [])
+
+  const autoLogin = ()=>{
     const info = {mail:" ",password:" "}
-    // axios.defaults.withCredentials = true;
-    
+    axios.defaults.withCredentials = true;
     axios.post(`http://localhost:4000/login/token/${window.localStorage.getItem('token')}`, info).then(data=>{
       logUser(data.data, true)
       console.log('c CONECTER!')
+      console.log(data.data)
     }).catch(err => {
       console.log('PAS CONNECTER!!!!!!!!!!!!!!!!!!!', window.localStorage.getItem('token'))
-        console.log(err)
+        // console.log(err)
+        logUser({}, false)
     }); 
-  }, [])
+  }
 
   const logUser = (data, state) => {
     setLog(state)

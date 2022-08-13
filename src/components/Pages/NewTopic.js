@@ -6,13 +6,14 @@ import axios from 'axios'
 import ImageUploader from '../Other/ImageUploader'
 import Editor from '../Other/Editor'
 import Select from '../Other/Select'
-
+import {useNavigate} from 'react-router-dom'
 export default function NewTopic(){
     const context = useContext(User)
     const [title, setTitle] = useState('')
     const [type, setType] = useState('')
     const [text, setText] = useState('')
     const [uploader, setUploader] = useState(false)
+    const navigate = useNavigate()
 
     const sendTopic = (e)=>{
         e.preventDefault()
@@ -24,7 +25,8 @@ export default function NewTopic(){
        
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:4000/topic/', newTopic).then(data=>{
-            // console.log(data)
+            console.log(data)
+            navigate(`/topic/${data.data.id}`)
         }).catch(err=>{
             console.log(err)
         })
