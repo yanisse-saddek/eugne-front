@@ -3,6 +3,8 @@ import {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import { User } from '../../App'
+import TopicContainer from '../Other/TopicContainer'
+import Select from '../Other/Select'
 
 export default function Forum(){
     const context = useContext(User)
@@ -13,7 +15,7 @@ export default function Forum(){
         newTopics(0, 10)
     }, [])
         const searchSubject = (e)=>{
-        axios.get(`http://localhost:4000/topic/subject/${e.target.value}`).then(data=>{
+        axios.get(`http://localhost:4000/topic/subject/${e}`).then(data=>{
             console.log(data)
             setTopicsList(data.data)
         })
@@ -38,16 +40,6 @@ export default function Forum(){
             console.log(data.data)
         })
     }
-    const getDate = (d)=>{
-        const date = new Date(d)
-        const todayDate = new Date()
-        console.log(todayDate.getDate(), date.getDate())
-        if(todayDate.getDate() === date.getDate()){
-            return date.toLocaleTimeString("fr-FR")
-        }else{
-            return date.toLocaleDateString("fr-FR")
-        }      
-    }
     return(
         <div className="forum">
             <div className="forum-main">
@@ -55,22 +47,11 @@ export default function Forum(){
                 <Link to="/new-topic" className="new-topic">NOUVEAU TOPIC</Link>
                 <div className="button-right">
                     <input type="text" placeholder="Rechercher un topic, un sujet..." />
-                    <select onChange={searchSubject}>
-                        <option defaultValue="all">Sujet</option>
-                        <option value="HTML">HTML/CSS</option>
-                        <option value="Javascript">JavaScript</option>
-                        <option value="NodeJS">NodeJS</option>
-                        <option value="VueJS">VueJS</option>
-                        <option value="ReactJS">ReactJS</option>
-                        <option value="AngularJS">AngluarJS</option>
-                        <option value="PHP">PHP</option>
-                        <option value="Symfony">Symfony</option>
-                        <option value="Laravel">Laravel</option>
-                    </select>
+                    <Select setType={searchSubject} />
                 </div>
             </div>
             <div className="topic-list">
-                <div className="topic-bar">
+                <div className="topic-info">
                     <p className="author">Auteur</p>
                     <p className="subject">Sujet</p>
                     <p className="last-msg">Dernier message</p>
@@ -80,12 +61,7 @@ export default function Forum(){
                     topicsList.map((topic, index)=>{
                         return(
                         <Link key={index} className="topic-link" to={`/topic/${topic._id}`}>
-                            <div className="topic-bar message">
-                                <p className="author">{topic.created_by.username}</p>
-                                <p className="subject">{topic.title}</p>
-                                <p className="last-msg">{getDate(topic.updated_at)}</p>
-                                <p className="number-msg">{topic.replies}</p>
-                            </div>
+                            <TopicContainer topic={topic} />
                         </Link>
                         )
                     })

@@ -1,7 +1,7 @@
 import '../../styles/Login.css';
 import {useState} from 'react'
 import axios from 'axios'
-import {Navigate} from 'react-router-dom'
+import {Navigate, NavLink} from 'react-router-dom'
 import {useContext} from 'react'
 import { User } from '../../App'
 import { useNavigate } from "react-router-dom";
@@ -41,7 +41,7 @@ export default function Login(){
                 <div className="login-body">
                     <input type="text" placeholder="Adresse e-mail" onChange={(e)=>{setMail(e.target.value)}}/>
                     <input type="password" placeholder="Mot de passe" onChange={(e)=>{setPassword(e.target.value)}}/>
-                    <p className="forgot-password">J'ai oublié mon mot de passe</p>
+                    <NavLink to="/forgot-password" className="forgot-password">J'ai oublié mon mot de passe</NavLink>
                     <div className="error-container">
                         {
                             message[0]?

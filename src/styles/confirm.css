@@ -6,8 +6,11 @@
 .msg{
     width:80%;
     padding:20px;
-    text-align: center;
     color:white;
     font-weight: bold;
     font-size: 20Px;
+    height:40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

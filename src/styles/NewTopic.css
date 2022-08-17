@@ -129,7 +129,7 @@
 
 
 .uploader{
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
     height:100%;
     width:100%;
@@ -177,4 +177,5 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-items: center;
     gap:10px;
+    background-color: #F3F3F3;
 }

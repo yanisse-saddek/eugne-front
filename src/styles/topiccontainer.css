@@ -1,0 +1,28 @@
+
+.topic-bar{
+    margin-top:20px;
+    background-color: #F3F3F3;
+    color:black;
+    display: flex;
+    height:30px;
+    align-items: center;
+    font-weight: bold;
+    padding-left:10px;
+    padding-right:10px;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.author{
+    width:20%;
+}
+.subject{
+    width:70%;
+}
+.last-msg{
+    width:15%;
+}
+.number-msg{
+    width:5%;
+    text-align: center;
+}

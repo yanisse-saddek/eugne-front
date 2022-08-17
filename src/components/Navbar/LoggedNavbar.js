@@ -8,7 +8,7 @@ export default  function LoggedNavbar(props){
                 <NavLink className="disconnect" to="/disconnect">DECONNEXION</NavLink>
             </div>
             <div className="navbar-right">
-                <NavLink to="/profile">{props.user.username}</NavLink>
+                <NavLink to={'/user/'+props.user.username}>{props.user.username}</NavLink>
                 <img className="profil-picture" src="https://static.comment-economiser.fr/images/photos_astuces/proprietaire-caht-5236.jpg" />
             </div>
         </>

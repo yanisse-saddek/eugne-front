@@ -36,7 +36,7 @@
     margin-right:25px !important;
 }
 .navbar .navbar-right img{
-    height:45px;
-    width:45px;
+    height:45px !important;
+    width:45px !important;
     border-radius:90px;
 }

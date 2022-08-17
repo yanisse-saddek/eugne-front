@@ -29,7 +29,10 @@
     background-color: #3F5BF5;
     justify-content: space-between;
     margin-top:30px;
+}
+.topic .topic-main .topic-top *{
     color:white;
+    font-weight: bold;
 }
 
 .topic .topic-main .topic-top .topic-top-right button{
@@ -74,6 +77,9 @@
     flex-direction: column;
     justify-content: space-between;
     margin-left:10px;
+}
+.topic-main-messages .message  a{
+    color:black !important;
 }
 .topic-main-messages .message .message-top  .message-top-right .name{
     font-size: 18px;

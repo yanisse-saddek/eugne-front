@@ -1,11 +1,17 @@
 import { Editor } from '@tinymce/tinymce-react';
+import {useContext, useEffect} from 'react'
+import { User } from '../../App'
 
 export default function EditorC(props){
+    const context = useContext(User)
+
     return(
+        <>
+        {/* {context?.user.mail_confirmed? */}
         <Editor
             apiKey='rhfovckwdqtgrkxuqum8cq629m2kvgdvcdbhw0ykhstkac56'
-            onEditorChange={(e)=>{props.change(e)}}
-            value={props.text}
+            onEditorChange={(e)=>{context.setTextEditor(e)}}
+            value={context.textEditor}
             init={{
             height: 400,
             menubar: false,    
@@ -23,6 +29,8 @@ export default function EditorC(props){
                         'removeformat | help'+ 'link | codesample | emoticons |    blockquote',
             content_style: 'body { background:#F3F3F3; font-family:Helvetica,Arial,sans-serif; font-size:14px;} img{max-height:70px; max-width:70px}',
             }}
-        />
+            />
+            {/* :<p>Vous devez confirmer votre mail pour pouvoir repondre a ce post</p>} */}
+        </>
     )
 }

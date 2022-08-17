@@ -3,8 +3,9 @@ import axios from "axios"
 import { User } from '../../App'
 
 
-export default function ImageUploader(props){
+export default function ImageUploader(){
     const [imageList, setImageList] = useState([])
+    const [image, setImage] = useState()
     const context = useContext(User)
 
     useEffect(()=>{
@@ -17,16 +18,25 @@ export default function ImageUploader(props){
         })
     }
     const addImage = (img)=>{
-        const newText = props.text.slice(0, -4) + `<img src=${img} />`
-        props.editText(newText)
+        const newText = context.textEditor.slice(0, -4) + `<img src=${img} />`
+        context.setTextEditor(newText)
     }
     const setFile = (e)=>{
         const file = new FormData(); 
-        file.append('image',e.target.files[0]); 
+        if(e){
+            e.preventDefault()
+            file.append('image', e.target.files[0])
+            setImage(e.target.files[0])
+        }else{
+            file.append('image', image)
+        }
+
         axios.post("http://localhost:4000/upload/image", file).then(ok=>{
             getImages()
         }).catch(err=>{
             console.log(err)
+            // context.reLogUser()
+            // setFile()
         })
     }
 
@@ -36,7 +46,7 @@ export default function ImageUploader(props){
             <div className="uploader-top">
                 Poster une nouvelle image
                 <div 
-                onClick={()=>{props.close(false)}}
+                onClick={()=>{context.setUploader(false)}}
                 className="uploader-top-right">
                     FERMER
                 </div>

@@ -41,7 +41,7 @@
     align-self: flex-end;
 }
 
-.forum .forum-main .topic-list .topic-bar{
+.forum .forum-main .topic-list .topic-info{
     margin-top:20px;
     background-color: #3F5BF5;
     display: flex;
@@ -53,23 +53,6 @@
     padding-right:10px;
 }
 
-.forum .forum-main .topic-list .message{
-    background-color: #F3F3F3;
-    color:black;
-}
-.author{
-    width:180px;
-}
-.subject{
-    width:400px;
-}
-.last-msg{
-    width:200px;
-}
-.number-msg{
-    width:100px;
-    text-align: center;
-}
 
 .forum .forum-main .topic-list .topic-link{
     text-decoration: none;

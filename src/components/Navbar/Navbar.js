@@ -7,6 +7,7 @@ import DisconnectedNavbar from './DisconnectedNavbar'
 
 export default function Navbar(){
     const context = useContext(User)
+    
     return(
         <div className="navbar">
             {
