@@ -3,7 +3,7 @@ import axios from "axios"
 import { User } from '../../App'
 
 
-export default function ImageUploader(){
+export default function ImageUploader(props){
     const [imageList, setImageList] = useState([])
     const [image, setImage] = useState()
     const context = useContext(User)
@@ -18,7 +18,7 @@ export default function ImageUploader(){
         })
     }
     const addImage = (img)=>{
-        const newText = context.textEditor.slice(0, -4) + `<img src=${img} />`
+        const newText = context.textEditor.slice(0, -4) + `<a href=${img} target='_blank'><img src=${img} /></a>`
         context.setTextEditor(newText)
     }
     const setFile = (e)=>{
@@ -35,8 +35,10 @@ export default function ImageUploader(){
             getImages()
         }).catch(err=>{
             console.log(err)
-            // context.reLogUser()
-            // setFile()
+            if(window.localStorage.getItem('isLoggedIn')){
+                context.reLogUser()
+                setFile()
+            }
         })
     }
 
@@ -45,10 +47,13 @@ export default function ImageUploader(){
         <div className="uploader-info">
             <div className="uploader-top">
                 Poster une nouvelle image
-                <div 
-                onClick={()=>{context.setUploader(false)}}
-                className="uploader-top-right">
-                    FERMER
+                <div
+                onClick={() => {
+                    props.close()
+                }}
+                className="modal-top-right"
+                >
+                FERMER
                 </div>
             </div>
             <div className="uploader-body">
@@ -63,7 +68,9 @@ export default function ImageUploader(){
                         {
                             imageList.map((image, index)=>{
                                 return(
+                                    <div className="image-e">
                                     <img onClick={()=>{addImage(image.link)}} key={index} src={image.link} />
+                                    </div>
                                 )
                             })
                         }

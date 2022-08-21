@@ -15,7 +15,8 @@ import "./styles/topiccontainer.css"
 import {createContext, useEffect, useState} from 'react'
 import axios from 'axios'
 import Disconnect from "./components/Other/Disconnect"
-import ImageUploader from "./components/Other/ImageUploader"
+import ImageUploader from "./components/modals/ImageUploader"
+import PPModal from "./components/modals/PPModal"
 import ForgotPassword from "./components/Pages/ForgotPassword"
 import ResetPassword from "./components/Pages/ResetPassword"
 import UserProfile from "./components/Pages/UserProfile"
@@ -24,14 +25,13 @@ import Modal from "./components/Other/Modal"
 export const User = createContext();
 function App() {
   const [log, setLog] = useState(false)
-  const [user, setUser] = useState({cc:'ok'})
+  const [user, setUser] = useState({})
   const [autoLog, setAutoLog] = useState(false)
-  const [uploader, setUploader] = useState(false)
   const [modal, setModal] = useState([false])
   const [textEditor, setTextEditor] = useState("")
+  const [visibility, setVisibility] = useState(true)
 
   const logUser = (data, state) => {
-    console.log(data, state)
     setLog(state)
     setUser(data)
   }
@@ -44,10 +44,9 @@ function App() {
     setAutoLog(true)
     setTimeout(()=>{
       setAutoLog(false)
-      setAutoLog(true)
     }, 1000)
   }
-  const changeContext = {logUser,log,user, setUploader, setTextEditor, textEditor, 
+  const changeContext = {logUser,log,user, setTextEditor, textEditor, 
     reLogUser, setModal, modal
   }
 
@@ -55,9 +54,9 @@ function App() {
   return (
     <div className="App">
     <User.Provider value={changeContext}>
-      {uploader?<ImageUploader /> : null}
       {modal[0]?<Modal /> : null}
       {autoLog?<AutoLogin />:null}
+
       <AutoLogin />
       <Navbar />
     <Routes>

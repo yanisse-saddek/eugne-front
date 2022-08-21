@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom"
+import {useContext, useEffect, useState} from 'react'
+import {User} from '../../App'
 
 export default  function LoggedNavbar(props){
+    const context = useContext(User)
+    const [info, setInfo] = useState({})
+    useEffect(()=>{
+        setInfo(context.user)
+    }, [context.user])
     return(
         <>
         <div className="navbar-left">
@@ -9,7 +16,7 @@ export default  function LoggedNavbar(props){
             </div>
             <div className="navbar-right">
                 <NavLink to={'/user/'+props.user.username}>{props.user.username}</NavLink>
-                <img className="profil-picture" src="https://static.comment-economiser.fr/images/photos_astuces/proprietaire-caht-5236.jpg" />
+                <img className="profil-picture" src={props.user.profile_picture} />
             </div>
         </>
     )

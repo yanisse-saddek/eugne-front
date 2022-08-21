@@ -11,10 +11,12 @@ export default function NewTopic(){
     const [title, setTitle] = useState('')
     const [type, setType] = useState('')
     const [text, setText] = useState('')
+    const [message, setMessage] = useState([])
     const navigate = useNavigate()
 
     const sendTopic = (e)=>{
-        e.preventDefault()
+        if(e){e.preventDefault()}
+        if(title, context.textEditor, type){
         const newTopic = {
             title:title,
             content:context.textEditor,
@@ -23,13 +25,20 @@ export default function NewTopic(){
        
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:4000/topic/', newTopic).then(data=>{
-            console.log(data)
             navigate(`/topic/${data.data.id}`)
             context.setTextEditor('')
         }).catch(err=>{
             console.log(err)
+            if(window.localStorage.getItem('isLoggedIn')){
+                context.reLogUser()
+                sendTopic()
+            }
         })
-    }
+    }else{
+        setMessage([true, "Veuillez remplir tout les champs"])
+      console.log('ya pas tt ')
+    }               
+}
 
 
     return(
@@ -42,8 +51,11 @@ export default function NewTopic(){
                 </div>
                 
                 <div className="new-topic-body">
+                {message[0]?
+                    <div className="error-message failed">{message[1]}</div>
+                :null}
                 <div className="button-right">
-                    <button onClick={()=>{context.setUploader(true)}}>Publier une nouvelle image</button>
+                    <button onClick={()=>{context.setModal([true, 'uploader'])}}>Publier une nouvelle image</button>
                 </div>
                     <p>Titre du topic</p>
                     <input type="text" className="title-input" onChange={(e)=>{setTitle(e.target.value)}}/>

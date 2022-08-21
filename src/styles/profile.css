@@ -16,6 +16,7 @@
     flex-direction: column;
     width:25%;
 }
+
 .profile-left img{
     height:150px !important;
     width:150px !important;
@@ -43,4 +44,17 @@
 }
 .registered_at{
     font-size: 12px;
+}
+.profile-btn{
+    background-color: #3F5BF5;
+    border:none;
+    color:white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding:5px;
+    width:150px
+}
+
+.image-profile{
+    height:3000px !important;
 }

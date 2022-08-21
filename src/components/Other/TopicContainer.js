@@ -3,7 +3,6 @@ export default function TopicContainer(props){
     const getDate = (d)=>{
         const date = new Date(d)
         const todayDate = new Date()
-        console.log(todayDate.getDate(), date.getDate())
         if(todayDate.getDate() === date.getDate()){
             return date.toLocaleTimeString("fr-FR")
         }else{

@@ -11,12 +11,17 @@ export default function Profile(){
     const [user, setUser] = useState(false)
 
     useEffect(()=>{
+        loadData()
+    }, [context.user])
+
+    const loadData = ()=>{
         axios.get(`http://localhost:4000/user/${params.id}`).then(data=>{
             setUser(data.data)
         }).catch(err=>{
             console.log(err)
         })
-    }, [])
+    }
+
 
     const getDate = (d)=>{
         const date = new Date(d)
@@ -34,7 +39,11 @@ export default function Profile(){
                 user?
             <div className="profile">
                 <div className="profile-left">
-                    <img src='https://static.comment-economiser.fr/images/photos_astuces/proprietaire-caht-5236.jpg'/>
+                    <div className="profile-left-top">
+                    <img className="image-profile" src={user.profile_picture} />
+                    <button className="profile-btn" onClick={()=>{context.setModal([true, 'profile-picture'])}}  >MODIFIER</button>
+                    </div>
+
                     <div className="profile-left-bottom">
                         <p className="username">{user.username}</p>
                         <p className="mail">{user.mail}</p>

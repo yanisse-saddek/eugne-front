@@ -39,16 +39,17 @@
     margin-top:30px;
 }
 
-.new-topic-main .new-topic-form .new-topic-body{
+.new-topic-body{
     background-color: #F3F3F3;
-    padding:50px;
+    padding:5px;
 }
 
-.new-topic-main .new-topic-form .new-topic-body .title-input{
+.title-input{
     border:none;
     width:100%;
     height:30px;
     padding:0;
+    border:1px solid black
 }
 
 .new-topic-footer{
@@ -94,7 +95,6 @@
 }
 
 .inputfile + label {
-    max-width: 70%;
     font-size: 1.25rem;
     font-weight: 700;
     text-overflow: ellipsis;
@@ -125,15 +125,12 @@
 }
 
 
-
-
-
 .uploader{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
     height:100%;
     width:100%;
-    z-index: 9999;
+    z-index: 10000;
     display: flex;
     justify-content: center;
         /* flex-direction: column; */

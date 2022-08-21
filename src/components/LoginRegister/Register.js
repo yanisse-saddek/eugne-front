@@ -20,7 +20,6 @@ export default function Register(){
                 password:password,
             }
             axios.post('http://localhost:4000/register', newUser).then(data=>{
-                console.log(data)
                 setMessage([true, data.data.message, true])
             }).catch(err => {
                 if(err.response.status === 409 || 401){

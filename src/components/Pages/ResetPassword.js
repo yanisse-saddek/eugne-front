@@ -7,7 +7,6 @@ export default function ResetPassword(){
     const [pass2, setPass2] = useState('')
     const [message, setMessage] = useState([])
     const params = useParams() 
-    console.log(params)
 
     const sendForm = (e)=>{
         e.preventDefault()
@@ -15,7 +14,6 @@ export default function ResetPassword(){
             setMessage([true, "Les mots de passe ne correspondent pas", false])
         }else{
             const info = {password:pass1}
-            console.log(params)
             axios.post(`http://localhost:4000/password/forgot/${params.token}`, info).then(data=>{
                 console.log(data)
                 setMessage([true, "Votre mot de passe a été changé", true])

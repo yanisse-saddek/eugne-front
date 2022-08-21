@@ -9,7 +9,6 @@ export default function Disconnect(){
     let navigate = useNavigate()
     useEffect(()=>{
         axios.get('http://localhost:4000/login/disconnect').then(data=>{
-            console.log(data)
             window.localStorage.removeItem('token')
             navigate('/')
             context.logUser({}, false)

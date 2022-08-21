@@ -22,7 +22,6 @@ export default function Forum(){
     }
     const loadPage = (e, load, restart)=>{
         e.preventDefault()
-        console.log('c apeler')
         if(restart){
             const newTopicsL = [0, 10]
             setTopicCount(newTopicsL)
@@ -37,7 +36,6 @@ export default function Forum(){
     const newTopics = (min, max)=>{
         axios.get(`http://localhost:4000/topic/${min}/${max} `).then(data=>{
             setTopicsList(data.data)
-            console.log(data.data)
         })
     }
     return(

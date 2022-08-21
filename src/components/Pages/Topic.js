@@ -4,7 +4,6 @@ import { Editor } from '@tinymce/tinymce-react';
 import { Link, useParams, NavLink} from 'react-router-dom';
 import axios from 'axios';
 import {Markup} from 'interweave'
-import ImageUploader from '../Other/ImageUploader'
 import {User} from '../../App'
 import EditorC from '../Other/Editor'
 
@@ -16,17 +15,18 @@ export default function Topic(){
 
     useEffect(()=>{
         getTopicData()
-    }, [])
+    }, [context.modal])
+
     const getTopicData = ()=>{
         axios.get(`http://localhost:4000/topic/${params.id}`).then(data=>{
             setTopic(data.data)
-            console.log(data.data)
         }).catch(err=>{
             console.log(err)
         })
     }
+
     const sendMessage = (e)=>{
-        {e?e.preventDefault():console.log('ok')}
+        e.preventDefault()
         const message = {
             content:context.textEditor,
         }   
@@ -37,9 +37,7 @@ export default function Topic(){
             context.setTextEditor('')
         }).catch(err=>{
             if(window.localStorage.getItem('isLoggedIn')){
-                // context.reLogUser()
-                // console.log('ya une ereur')
-                // sendMessage()    
+                context.reLogUser()
             }
         })
     }
@@ -65,7 +63,7 @@ export default function Topic(){
                         context.user._id === topic.created_by._id?
                     <div className="topic-top-right">
                     <button className="btn resolved">RESOLU?</button>
-                    <button className="btn edit">MODIFIER</button>
+                    <button onClick={()=>{context.setModal([true, 'edit', topic])}} className="btn edit">MODIFIER</button>
                     <button onClick={()=>{context.setModal([true, 'delete', params.id])}} className="btn delete" >SUPPRIMER</button>
                     </div>
                         :null
@@ -75,12 +73,14 @@ export default function Topic(){
                     <div className="message">
                         <NavLink to={'/user/'+topic.created_by.username}>
                         <div className="message-top">
-                            <img className="profile-picture" src="https://static.comment-economiser.fr/images/photos_astuces/proprietaire-caht-5236.jpg"/>
+                        <div className='message-top-left'>
+                            <img className="profile-picture" src={topic.created_by.profile_picture} />
                             <div className="message-top-right">
                                 <p className="name">{topic.created_by.username}</p>
                                 <p className="date">{getDate(topic.updated_at)}</p>
                             </div>
-                        </div>
+                            </div>
+                            </div>
                         </NavLink>
                         <div className="message-body">
                             <Markup content={topic.content}/>
@@ -94,11 +94,21 @@ export default function Topic(){
                             return(
                                 <div key={index} className="message">
                                 <div className="message-top">
-                                    <img className="profile-picture" src="https://static.comment-economiser.fr/images/photos_astuces/proprietaire-caht-5236.jpg"/>
+                                    <div className='message-top-left'>
+                                    <img className="profile-picture" src={message.created_by.profile_picture}/>
                                     <div className="message-top-right">
                                         <p className="name">{message.created_by.username}</p>
                                         <p className="date">{message.created_at}</p>
                                     </div>
+                                    </div>
+                                    {message.created_by._id == context.user._id?
+                                    <div onClick={()=>{context.setModal([true, 'delete-msg', message])}} className="delete-btn">x</div>
+                                    :context.user._id && !message.reported?
+                                    <svg onClick={()=>{context.setModal([true, 'report-msg', message])}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="#FC4E4E" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM232 152C232 138.8 242.8 128 256 128s24 10.75 24 24v128c0 13.25-10.75 24-24 24S232 293.3 232 280V152zM256 400c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 385.9 273.4 400 256 400z"/>
+                                    </svg>
+                                    :null
+                                    }
                                 </div>
                                 <div className="message-body">
                                     <Markup content={message.content}/>
@@ -113,7 +123,7 @@ export default function Topic(){
 
                     <div className="separator">Poster un message</div>
                     <div className="button-right">  
-                        <button onClick={()=>{context.setUploader(true)}}>Publier une nouvelle image</button>
+                        <button onClick={()=>{context.setModal([true, 'uploader'])}}>Publier une nouvelle image</button>
                     </div>
                         <EditorC />
 

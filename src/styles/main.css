@@ -16,6 +16,11 @@
 .tox-statusbar{display:none !important}
 blockquote{background: rgb(225, 225, 225);}
 
-#tinymce, * img{width:70px !important; height:70px !important;}
+#tinymce img{
+    height: auto; 
+    width: auto; 
+    max-width: 70px ; 
+    max-height: 70px ;
+}
 
 a{text-decoration:none;}

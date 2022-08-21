@@ -13,7 +13,7 @@ export default function EditorC(props){
             onEditorChange={(e)=>{context.setTextEditor(e)}}
             value={context.textEditor}
             init={{
-            height: 400,
+            height: 300,
             menubar: false,    
             language: 'fr_FR',
             object_resizing : false,
