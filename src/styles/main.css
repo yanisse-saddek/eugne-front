@@ -24,3 +24,14 @@ blockquote{background: rgb(225, 225, 225);}
 }
 
 a{text-decoration:none;}
+
+blockquote p::before {
+    font-weight: bold;
+    color: black;
+    content: ">";
+  }
+  
+blockquote{
+    border-left:2px solid #3F5BF5;
+    padding:25px;   
+}

@@ -13,7 +13,7 @@ export default function Navbar(){
             {
             context.log?
             <>
-            <LoggedNavbar user={context.user}/>
+            <LoggedNavbar/>
             </>:
             <DisconnectedNavbar />
             }

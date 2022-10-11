@@ -1,9 +1,9 @@
-import '../../styles/Login.css';
+import '../styles/Login.css';
 import {useState} from 'react'
 import axios from 'axios'
 import {Navigate, NavLink} from 'react-router-dom'
 import {useContext} from 'react'
-import { User } from '../../App'
+import { User } from '../App'
 import { useNavigate } from "react-router-dom";
 
 export default function Login(){
@@ -15,7 +15,6 @@ export default function Login(){
 
     const login = (e)=>{
         e.preventDefault()
-        if(mail && password){
             const info = {
                 mail:mail,
                 password:password
@@ -27,10 +26,10 @@ export default function Login(){
                 window.localStorage.setItem('token', data.data.token)
                 navigate("/", { replace: true });
             }).catch(err => {
+                console.log(err)
                 setMessage([true, "Email ou mot de passe incorrect", false])
                 window.localStorage.setItem('isLoggedIn', false)
             }); 
-        }
     }
     return(
         <div className="login">

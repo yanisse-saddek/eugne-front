@@ -1,0 +1,50 @@
+
+.admin{
+    min-height:100vh;
+    display: flex;
+    justify-content: center
+}
+.admin-main{
+    width:90%;
+}
+.admin-title{
+    background-color: #3F5BF5;
+    font-weight: bold;
+    color:white;    
+    padding:20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.reports{
+    background-color: red;
+}
+.report{
+    background-color: #F3F3F3;
+    padding:10px;
+    color:black;
+    margin-bottom:10px;
+}
+.report-detail{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+.reason{
+    font-weight: bold;
+}
+.see-report{
+    background-color: #3F5BF5;
+    border:none;
+    color:white;
+    font-weight: bold;
+    padding:5px;
+}
+
+.reporter{
+    color:#3F5BF5;
+    font-weight: bold;
+}
+.reported{
+    color:#FC4E4E;
+    font-weight: bold;
+}

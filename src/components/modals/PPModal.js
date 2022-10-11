@@ -15,19 +15,16 @@ export default function DeleteModal(props) {
     e.preventDefault();
 
     axios.defaults.withCredentials = true;
-    axios
-      .post("http://localhost:4000/upload/profile-picture", image)
+    axios.post("http://localhost:4000/upload/profile-picture", image)
       .then((data) => {
         props.close()
-        context.logUser(data.data, true);
-        setTimeout(() => {
-          context.reLogUser();
-        }, 1000);
+        context.reLogUser();
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   const setFile = (e) => {
     const file = new FormData();
     file.append("image", e.target.files[0]);

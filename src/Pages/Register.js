@@ -1,4 +1,4 @@
-import '../../styles/Login.css';
+import '../styles/Login.css';
 import {useState} from 'react'
 import axios from 'axios'
 
@@ -21,8 +21,10 @@ export default function Register(){
             }
             axios.post('http://localhost:4000/register', newUser).then(data=>{
                 setMessage([true, data.data.message, true])
+                console.log(data)
             }).catch(err => {
                 if(err.response.status === 409 || 401){
+                    console.log(err)
                     setMessage([true, err.response.data.message, false])
                 }
             }); 

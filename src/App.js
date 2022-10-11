@@ -1,11 +1,11 @@
 import {Routes,Route} from "react-router-dom"
 import Navbar from './components/Navbar/Navbar'
-import Login from './components/LoginRegister/Login'
-import Register from './components/LoginRegister/Register'
-import Forum from './components/Pages/Forum'
-import Confirm from './components/Pages/Confirm'
-import NewTopic from './components/Pages/NewTopic'
-import Topic from './components/Pages/Topic'
+import Login from './Pages/Login'
+import Register from './Pages/Register'
+import Forum from './Pages/Forum'
+import Confirm from './Pages/Confirm'
+import NewTopic from './Pages/NewTopic'
+import Topic from './Pages/Topic'
 import AutoLogin from './components/Other/AutoLogin'
 
 import "./styles/prism.css";
@@ -17,9 +17,10 @@ import axios from 'axios'
 import Disconnect from "./components/Other/Disconnect"
 import ImageUploader from "./components/modals/ImageUploader"
 import PPModal from "./components/modals/PPModal"
-import ForgotPassword from "./components/Pages/ForgotPassword"
-import ResetPassword from "./components/Pages/ResetPassword"
-import UserProfile from "./components/Pages/UserProfile"
+import ForgotPassword from "./Pages/ForgotPassword"
+import ResetPassword from "./Pages/ResetPassword"
+import UserProfile from "./Pages/UserProfile"
+import Admin from "./Pages/Admin"
 import Modal from "./components/Other/Modal"
 
 export const User = createContext();
@@ -36,10 +37,6 @@ function App() {
     setUser(data)
   }
 
-  useEffect(()=>{
-      reLogUser()
-  }, [])
-  
   const reLogUser = ()=>{
     setAutoLog(true)
     setTimeout(()=>{
@@ -60,8 +57,12 @@ function App() {
       <AutoLogin />
       <Navbar />
     <Routes>
-      <Route path="/" element={<Forum/>} />
-      <Route path="/topic/:id" element={<Topic/>} />
+      <Route path="/">
+        <Route index element={<Forum />} />
+        <Route path=":page" element={<Forum />} />
+      </Route>
+
+      <Route path="/topic/:id/:page" element={<Topic/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<Register/>} />
       <Route path="/new-topic" element={<NewTopic/>} />
@@ -70,6 +71,7 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword/>} />
       <Route path="/reset-password/:token" element={<ResetPassword/>} />
       <Route path="/user/:id" element={<UserProfile/>} />
+      <Route path="/admin" element={<Admin/>} />
     </Routes>
     </User.Provider>
     </div>

@@ -1,10 +1,10 @@
 import {Link} from 'react-router-dom'
 import {useState, useContext} from 'react'
-import { User } from '../../App'
-import '../../styles/NewTopic.css'
+import { User } from '../App'
+import '../styles/NewTopic.css'
 import axios from 'axios'
-import Editor from '../Other/Editor'
-import Select from '../Other/Select'
+import Editor from '../components/Other/Editor'
+import Select from '../components/Other/Select'
 import {useNavigate} from 'react-router-dom'
 export default function NewTopic(){
     const context = useContext(User)
@@ -28,7 +28,6 @@ export default function NewTopic(){
             navigate(`/topic/${data.data.id}`)
             context.setTextEditor('')
         }).catch(err=>{
-            console.log(err)
             if(window.localStorage.getItem('isLoggedIn')){
                 context.reLogUser()
                 sendTopic()
@@ -36,13 +35,13 @@ export default function NewTopic(){
         })
     }else{
         setMessage([true, "Veuillez remplir tout les champs"])
-      console.log('ya pas tt ')
     }               
 }
 
 
     return(
         <div className="topic-page">
+
         <div className="new-topic-main">
             <div className="new-topic-form">
             <Link to="/" className="return-btn">RETOUR</Link>

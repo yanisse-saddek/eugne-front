@@ -55,44 +55,44 @@
     background-color: #FC4E4E !important;
 }
 
-.topic-main-messages .message{
+.message{
     padding:10px;
     margin-bottom:20px;
     background-color: #FAFAFA;
 }
-.topic-main-messages .message:nth-child(even){
+.message:nth-child(even){
     background-color: #F3F3F3;
 }
-.topic-main-messages .message .message-top{
+.message .message-top{
     display: flex;
     justify-content: space-between;
 }
 .message-top-left{
     display: flex;
 }
-.topic-main-messages .message .message-top .profile-picture{
+.message .message-top .profile-picture{
     height:50px !important;
     width:50px !important;
     background-size: cover;
 }   
 
-.topic-main-messages .message .message-top  .message-top-right{
+.message .message-top  .message-top-right{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-left:10px;
 }
-.topic-main-messages .message  a{
+.message  a{
     color:black !important;
 }
-.topic-main-messages .message .message-top  .message-top-right .name{
+.message .message-top  .message-top-right .name{
     font-size: 18px;
     font-weight: bold;
 }
-.topic-main-messages .message .message-top  .message-top-right .date{
+.message .message-top  .message-top-right .date{
     font-size: 14px;
 }
-.topic-main-messages .message .message-body{
+.message .message-body{
     min-height:200Px;
     margin-top:10px;
     border-bottom:2px solid black;
@@ -140,8 +140,24 @@
     display: flex;
     justify-content: center;
     border-radius: 30px;
+    align-items: center;
+}
+.reply-btn{
+    background-color: #3F5BF5;
+    color:white;
+    font-weight: bold;
+    height:20px;
+    width:20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    align-items: center;
+    margin-right:10px;
 }
 .message svg{
     height:20px;
     width:20px
+}
+.topic-btn-top{
+    display:flex;
 }
