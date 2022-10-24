@@ -2,6 +2,9 @@ import '../styles/Login.css';
 import {useState} from 'react'
 import axios from 'axios'
 
+// show "bonjour" in the console
+
+
 export default function Register(){
     const [username, setUsername] = useState('')
     const [mail, setMail] = useState('')

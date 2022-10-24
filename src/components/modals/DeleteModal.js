@@ -11,6 +11,7 @@ export default function DeleteModal(props) {
     axios
       .delete(`http://localhost:4000/topic/${context.modal[2]}`)
       .then((data) => {
+        console.log(data, 'supprimin')
         navigate("/");
         props.close()
       })

@@ -25,13 +25,17 @@ export default function NewTopic(){
        
         axios.defaults.withCredentials = true;
         axios.post('http://localhost:4000/topic/', newTopic).then(data=>{
-            navigate(`/topic/${data.data.id}`)
+            navigate(`/topic/${data.data.id}/1`)
             context.setTextEditor('')
         }).catch(err=>{
-            if(window.localStorage.getItem('isLoggedIn')){
-                context.reLogUser()
-                sendTopic()
+            console.log(err)
+            if(err.response.status === 401){
+                setMessage([true, "Veuillez vous connecter pour poster un sujet"])
             }
+            // if(window.localStorage.getItem('isLoggedIn')){
+            //     context.reLogUser()
+            //     sendTopic()
+            // }
         })
     }else{
         setMessage([true, "Veuillez remplir tout les champs"])

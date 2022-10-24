@@ -15,6 +15,7 @@ export default function Topic(){
     const [text, setText] = useState('')
     const [topic, setTopic] = useState(false)
     const [count, setCount] = useState(0)
+    const [message, setMessage] = useState([])
     const [messageCount, setMessageCount] = useState([(params.page-1)*10, 10])
     const context = useContext(User)
 
@@ -26,7 +27,6 @@ export default function Topic(){
         const url = `http://localhost:4000/topic/${params.id}/${min}/${max}`
         axios.get(url).then(data=>{
             setTopic(data.data)
-            console.log(data.data)
             setCount(data.data.replies)
         }).catch(err=>{
             console.log(err)
@@ -43,10 +43,8 @@ export default function Topic(){
             getTopicData(messageCount[0], messageCount[1])
             context.setTextEditor('')
         }).catch(err=>{
-            if(window.localStorage.getItem('isLoggedIn')){
-                context.reLogUser()
-                sendMessage()
-            }
+            console.log(err)
+            setMessage([true, "Veuillez vous connecter pour poster un message"])
         })
     }
 
@@ -54,6 +52,8 @@ export default function Topic(){
     return(
         <div className="topic topic-page">
             <div className="topic-main">
+            <button onClick={sendMessage} className="send-message">ENVOYER</button>
+
                 <button className="return-btn"><Link to="/">RETOUR</Link></button>
                 <Paginate link={`/topic/${params.id}`} page={params.page} count={count} topicCount={messageCount} newData={getTopicData} setCount={setMessageCount} step={10} />
                 {topic?
@@ -67,6 +67,9 @@ export default function Topic(){
                         <div className="button-right">  
                             <button onClick={()=>{context.setModal([true, 'uploader'])}}>Publier une nouvelle image</button>
                         </div>
+                            {message[0]?
+                                <div className="error-message failed">{message[1]}</div>
+                            :null}
                             <EditorC />
                         <div className="page-bottom">
                             <button onClick={sendMessage} className="send-message">ENVOYER</button>

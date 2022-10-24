@@ -43,16 +43,14 @@ function App() {
       setAutoLog(false)
     }, 1000)
   }
-  const changeContext = {logUser,log,user, setTextEditor, textEditor, 
-    reLogUser, setModal, modal
-  }
+  const changeContext = {logUser,log,user, setTextEditor,reLogUser, textEditor, setModal, modal}
 
 
   return (
     <div className="App">
     <User.Provider value={changeContext}>
       {modal[0]?<Modal /> : null}
-      {autoLog?<AutoLogin />:null}
+      {/* {autoLog?<AutoLogin />:null} */}
 
       <AutoLogin />
       <Navbar />
