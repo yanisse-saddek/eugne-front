@@ -12,28 +12,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left:40px;
-    padding-right:40px;
 }
 .navbar a{
     color:white;
-    font-size: 20px;
+    font-size:1rem;
     text-decoration: none;
     font-weight: bold;
+    padding:10px;
 }
 .navbar .navbar-right{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-}
-.navbar .navbar-left a {
-    margin-right:25px;
 }
 .navbar .navbar-left .disconnect {
     color:#FC4E4E
-}
-.navbar .navbar-right a{
-    margin-right:25px !important;
 }
 .navbar .navbar-right img{
     height:45px !important;

@@ -19,11 +19,12 @@
     background-color: #3F5BF5;
     font-weight: bold;
     border:none;
-    font-size: 18px;
+    font-size: 1rem;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
 }
 
@@ -33,7 +34,7 @@
 }
 .forum .forum-main .top-buttons .button-right input{
     height:50px;
-    width:340px;
+    width:100%;
 }
 .forum .forum-main .top-buttons .button-right select{
     height:50px;
@@ -51,6 +52,7 @@
     font-weight: bold;
     padding-left:10px;
     padding-right:10px;
+    font-size: 1rem;
 }
 
 
