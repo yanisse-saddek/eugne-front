@@ -20,6 +20,7 @@
 .profile-left img{
     height:150px !important;
     width:150px !important;
+    object-fit: cover;
 }
 
 .profile-right{

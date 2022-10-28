@@ -1,14 +1,14 @@
 import {useState, useEffect, useContext} from 'react'
-import '../styles/Topic.css'
+import './Topic.css'
 import { Editor } from '@tinymce/tinymce-react';
 import { Link, useParams, NavLink} from 'react-router-dom';
 import axios from 'axios';
 import {Markup} from 'interweave'
-import {User} from '../App'
-import EditorC from '../components/Other/Editor'
-import Paginate from '../components/Other/Paginate';
-import TopicHeader from '../components/Other/TopicHeader';
-import Message from '../components/Other/Message';
+import {User} from '../../App'
+import EditorC from '../../components/Other/Editor'
+import Paginate from '../../components/Other/Paginate';
+import TopicHeader from '../../components/Other/TopicHeader';
+import Message from '../../components/Other/Message';
 
 export default function Topic(){
     const params = useParams()

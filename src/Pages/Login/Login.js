@@ -1,9 +1,9 @@
-import '../styles/Login.css';
+import './Login.css';
 import {useState} from 'react'
 import axios from 'axios'
 import {Navigate, NavLink} from 'react-router-dom'
 import {useContext} from 'react'
-import { User } from '../App'
+import { User } from '../../App'
 import { useNavigate } from "react-router-dom";
 
 export default function Login(){
@@ -22,13 +22,11 @@ export default function Login(){
             axios.defaults.withCredentials = true;
             axios.post('http://localhost:4000/login', info).then(data=>{
                 context.logUser(data.data, true)
-                window.localStorage.setItem('isLoggedIn', true)
-                window.localStorage.setItem('token', data.data.token)
                 navigate("/", { replace: true });
+                console.log(data)
             }).catch(err => {
                 console.log(err)
                 setMessage([true, "Email ou mot de passe incorrect", false])
-                window.localStorage.setItem('isLoggedIn', false)
             }); 
     }
     return(

@@ -1,8 +1,6 @@
-import '../styles/Login.css';
+import './Register.css';
 import {useState} from 'react'
 import axios from 'axios'
-
-// show "bonjour" in the console
 
 
 export default function Register(){

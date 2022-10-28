@@ -1,7 +1,7 @@
-import '../styles/profile.css'
-import TopicContainer from '../components/Other/TopicContainer'
+import './profile.css'
+import TopicContainer from '../../components/Other/TopicContainer'
 import {useContext, useEffect,useState} from 'react'
-import {User} from '../App'
+import {User} from '../../App'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
 

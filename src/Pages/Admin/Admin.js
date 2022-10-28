@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { User } from "../App";
+import { User } from "../../App";
 import { useNavigate } from "react-router-dom";
-import '../styles/admin.css'
+import './admin.css'
 import { Markup } from "interweave";
 
 export default function Admin() {

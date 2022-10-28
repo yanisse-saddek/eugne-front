@@ -1,7 +1,7 @@
 import {useParams} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import '../styles/confirm.css'
+import './confirm.css'
 export default function Confirm(){
     const params = useParams();
     const [message, setMessage] = useState([])

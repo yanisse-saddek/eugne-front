@@ -1,11 +1,11 @@
-import "../styles/Forum.css"
+import "./Forum.css"
 import {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import { User } from '../App'
-import TopicContainer from '../components/Other/TopicContainer'
-import Select from '../components/Other/Select'
-import Paginate from '../components/Other/Paginate'
+import { User } from '../../App'
+import TopicContainer from '../../components/Other/TopicContainer'
+import Select from '../../components/Other/Select'
+import Paginate from '../../components/Other/Paginate'
 import { useParams } from "react-router-dom"
 
 export default function Forum(){
